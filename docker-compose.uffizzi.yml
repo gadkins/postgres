@@ -13,7 +13,7 @@ services:
     environment:
       POSTGRES_PASSWORD: postgrespassword
     healthcheck:
-      test: ["sh", "pg_is_ready", "-d", "db_prod"]
+      test: ["CMD-SHELL", "pg_is_ready", "-d", "db_prod"]
       interval: 5s
       timeout: 3s
     deploy:
