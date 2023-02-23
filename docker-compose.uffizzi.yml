@@ -20,6 +20,6 @@ services:
       resources:
         limits:
           memory: 500M
-          
-    app:
-      image: nginx
+   
+  app:
+    image: nginx
