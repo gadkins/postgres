@@ -1,0 +1,22 @@
+x-uffizzi:
+  ingress:
+    service: app
+    port: 3001
+
+services:
+  postgres:
+    image: postgres:12
+    command: ["postgres", "-c", "jit=off"]
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgrespassword
+    healthcheck:
+      test: ["sh", "pg_is_ready", "-d", "db_prod"]
+      interval: 5s
+      timeout: 3s
+    deploy:
+      resources:
+        limits:
+          memory: 500M
